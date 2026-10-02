@@ -1,0 +1,163 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-display);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-ink: var(--ink);
+  --color-amber: var(--amber);
+  --color-signal: var(--signal);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* Acco Electric - graphite shop floor + sunburst amber + signal red */
+  --background: #e8eaed;
+  --foreground: #1a1d24;
+  --ink: #15181e;
+  --brand: #15181e;
+  --brand-foreground: #ffffff;
+  --amber: #e3a012;
+  --signal: #c8102e;
+  --card: #f4f5f7;
+  --card-foreground: #1a1d24;
+  --popover: #f4f5f7;
+  --popover-foreground: #1a1d24;
+  --primary: #15181e;
+  --primary-foreground: #ffffff;
+  --secondary: #15181e;
+  --secondary-foreground: #e8eaed;
+  --muted: #d5d9e0;
+  --muted-foreground: #4b5160;
+  --accent: #dde1e8;
+  --accent-foreground: #1a1d24;
+  --destructive: #b42318;
+  --border: #b8bfca;
+  --input: #b8bfca;
+  --ring: #e3a012;
+  --radius: 0.5rem;
+  --chart-1: #15181e;
+  --chart-2: #e3a012;
+  --chart-3: #c8102e;
+  --chart-4: #5a6570;
+  --chart-5: #8a9aab;
+  --sidebar: #f4f5f7;
+  --sidebar-foreground: #1a1d24;
+  --sidebar-primary: #15181e;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #dde1e8;
+  --sidebar-accent-foreground: #1a1d24;
+  --sidebar-border: #b8bfca;
+  --sidebar-ring: #e3a012;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image:
+      radial-gradient(ellipse 100% 70% at 0% 0%, rgba(227, 160, 18, 0.08), transparent 50%),
+      radial-gradient(ellipse 80% 50% at 100% 0%, rgba(200, 16, 46, 0.05), transparent 45%),
+      linear-gradient(180deg, #eef0f3 0%, #e8eaed 50%, #e2e5ea 100%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--amber) 40%, transparent);
+    color: var(--ink);
+  }
+}
+
+@layer utilities {
+  .site-wrap {
+    @apply mx-auto w-full max-w-6xl px-5 md:px-8;
+  }
+
+  .animate-rise {
+    animation: rise 0.7s ease-out both;
+  }
+
+  .animate-rise-delay-1 {
+    animation: rise 0.7s ease-out 0.1s both;
+  }
+
+  .animate-rise-delay-2 {
+    animation: rise 0.7s ease-out 0.2s both;
+  }
+
+  .animate-rise-delay-3 {
+    animation: rise 0.7s ease-out 0.3s both;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-rise-delay-1,
+  .animate-rise-delay-2,
+  .animate-rise-delay-3 {
+    animation: none;
+  }
+}
